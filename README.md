@@ -1,4 +1,4 @@
-# Diploma ( back ) 
+# Diploma / back
 
 **Автор**  
 Илья Шнырев  
