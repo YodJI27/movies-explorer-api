@@ -15,8 +15,7 @@ const NotFoundError = require('./errors/NotFoundError');
 
 const app = express();
 
-const { PORT = 3000, LINK, NODE_ENV } = process.env;
-
+const { PORT = 3000, LINK, NODE_ENV} = process.env;
 mongoose.connect(NODE_ENV === 'production' ? LINK : BD_DEV_HOST, {
   useNewUrlParser: true,
   useCreateIndex: true,

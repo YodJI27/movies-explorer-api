@@ -24,3 +24,4 @@ module.exports.authoriz = (req, res, next) => {
   req.user = payload;
   next();
 };
+
