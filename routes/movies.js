@@ -35,13 +35,13 @@ router.post(
       description: Joi.string().required(),
       image: Joi.string()
         .required()
-        .pattern(/^https?:\/\/[a-z0-9\W\_]+#?$/i, "url"), // eslint-disable-line
+        .pattern(/^https?:\/\/[a-z0-9\W]+#?$/i, 'url'),
       trailer: Joi.string()
         .required()
-        .pattern(/^https?:\/\/[a-z0-9\W\_]+#?$/i, "url"), // eslint-disable-line
+        .pattern(/^https?:\/\/[a-z0-9\W]+#?$/i, 'url'),
       thumbnail: Joi.string()
         .required()
-        .pattern(/^https?:\/\/[a-z0-9\W\_]+#?$/i, "url"), // eslint-disable-line
+        .pattern(/^https?:\/\/[a-z0-9\W]+#?$/i, 'url'),
       movieId: Joi.string().alphanum().length(24).required(),
       nameRu: Joi.string().required(),
       nameEn: Joi.string().required(),

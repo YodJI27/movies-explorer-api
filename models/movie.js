@@ -27,7 +27,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        return /^https?:\/\/[a-z0-9\W\_]+#?$/i.test(v); // eslint-disable-line
+        return /^https?:\/\/[a-z0-9\W]+#?$/i.test(v);
       },
       message: 'Ошибка валидации URL',
     },
@@ -37,7 +37,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        return /^https?:\/\/[a-z0-9\W\_]+#?$/i.test(v); // eslint-disable-line
+        return /^https?:\/\/[a-z0-9\W]+#?$/i.test(v);
       },
       message: 'Ошибка валидации URL',
     },
@@ -47,7 +47,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        return /^https?:\/\/[a-z0-9\W\_]+#?$/i.test(v); // eslint-disable-line
+        return /^https?:\/\/[a-z0-9\W]+#?$/i.test(v);
       },
       message: 'Ошибка валидации URL',
     },
