@@ -2,20 +2,21 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { BD_DEV_HOST } = require('./utils/config');
-const userRouter = require('./routes/users');
-const moviesRouter = require('./routes/movies');
+const routers = require('./routes/index');
 const { authoriz } = require('./middlewares/auth');
 const { login, createProfile } = require('./controllers/users');
 const { centralErrors } = require('./utils/centralErrors');
 const NotFoundError = require('./errors/NotFoundError');
 
 const app = express();
-
 const { PORT = 3000, LINK, NODE_ENV } = process.env;
+
+app.use(helmet());
 
 mongoose.connect(NODE_ENV === 'production' ? LINK : BD_DEV_HOST, {
   useNewUrlParser: true,
@@ -49,12 +50,12 @@ app.post(
   login,
 );
 
-app.use('/', authoriz, userRouter);
-app.use('/', authoriz, moviesRouter);
+app.use('/', authoriz, routers);
 
 app.use(() => {
   throw new NotFoundError('Запрашиваемый ресурс не найден');
 });
+
 app.use(errorLogger);
 app.use(errors());
 
