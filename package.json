@@ -1,0 +1,42 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "**Автор**  \r Илья Шнырев  \r ***<img src=\"https://www.pngrepo.com/png/285/170/email.png\" width=\"20\" height=\"20\">  shnyrev.iilya@yandex.ru***   \r ***<img src=\"https://simpleicons.org/icons/habr.svg\" width=\"20\" height=\"20\">  https://career.habr.com/yodji27***  \r ***<img src=\"https://simpleicons.org/icons/telegram.svg\" width=\"20\" height=\"20\">  YodJI27***",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YodJI27/movies-explorer-api.git"
+  },
+  "author": "Ilya Shnyrev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YodJI27/movies-explorer-api/issues"
+  },
+  "homepage": "https://github.com/YodJI27/movies-explorer-api#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "celebrate": "^14.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-winston": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.4",
+    "prettier": "^2.2.1",
+    "validator": "^13.5.2",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.7"
+  }
+}
