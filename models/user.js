@@ -24,12 +24,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     minlength: 8,
     select: false,
-    validate: {
-      validator(v) {
-        return /[a-z0-9]*/i.test(v);
-      },
-      message: 'Пароль некорректен',
-    },
   },
 });
 

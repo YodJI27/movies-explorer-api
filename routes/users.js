@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
+const validator = require('validator');
 const { getUsersMe, updateProfile } = require('../controllers/users');
 
 router.get(
@@ -22,8 +23,13 @@ router.patch(
       })
       .unknown(),
     body: Joi.object().keys({
-      name: Joi.string().required().min(2).max(30),
-      about: Joi.string().required(),
+      name: Joi.string().min(2).max(30),
+      email: Joi.string().custom((value, helpers) => {
+        if (validator.isEmail(value)) {
+          return value;
+        }
+        return helpers.message('Поле email заполнено некорректно');
+      }),
     }),
   }),
   updateProfile,

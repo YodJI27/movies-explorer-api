@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { ObjectId } = require('mongodb');
+const validatorUrl = require('validator');
 
 const movieSchema = new mongoose.Schema({
   country: {
@@ -27,7 +28,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        return /^https?:\/\/[a-z0-9\W]+#?$/i.test(v);
+        return validatorUrl.isURL(v);
       },
       message: 'Ошибка валидации URL',
     },
@@ -37,7 +38,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        return /^https?:\/\/[a-z0-9\W]+#?$/i.test(v);
+        return validatorUrl.isURL(v);
       },
       message: 'Ошибка валидации URL',
     },
@@ -47,7 +48,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        return /^https?:\/\/[a-z0-9\W]+#?$/i.test(v);
+        return validatorUrl.isURL(v);
       },
       message: 'Ошибка валидации URL',
     },
@@ -72,11 +73,11 @@ const movieSchema = new mongoose.Schema({
       message: 'Некорректный id',
     },
   },
-  nameRu: {
+  nameRU: {
     type: String,
     required: true,
   },
-  nameEn: {
+  nameEN: {
     type: String,
     required: true,
   },
