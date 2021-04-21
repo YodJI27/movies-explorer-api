@@ -1,11 +1,6 @@
 # Diploma / back
 
-<<<<<<< HEAD
-
 https://api.mydiploma.students.nomoredomains.monster - Ссылка на API
-=======
-[Ссылка на API](https://api.mydiploma.students.nomoredomains.monster/)  
->>>>>>> 1a4fee6e44d381f5f1affb161676437188df72a8
 IP: 178.154.210.90
 
 **Автор**  
