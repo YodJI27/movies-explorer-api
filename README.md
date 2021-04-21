@@ -1,6 +1,6 @@
 # Diploma / back
 
-[Ссылка на API](https://mydiploma.students.nomoredomains.monster/)  
+https://mydiploma.students.nomoredomains.monster - Ccылка на API  
 IP: 178.154.210.90
 
 **Автор**  
