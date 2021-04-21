@@ -64,7 +64,7 @@ const movieSchema = new mongoose.Schema({
     },
   },
   movieId: {
-    type: ObjectId,
+    type: Number,
     required: true,
     validate: {
       validator(v) {

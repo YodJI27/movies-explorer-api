@@ -75,7 +75,7 @@ router.delete(
       })
       .unknown(),
     params: Joi.object().keys({
-      movieId: Joi.string().alphanum().length(24).required(),
+      movieId: Joi.string().alphanum().length(24).required().hex(),
     }),
   }),
   deleteMovies,
