@@ -1,5 +1,15 @@
 # Diploma / back
 
+### Api для дипломного проекта под названием "Диплома"
+
+
+**Применяемые технологии:**
+1) Node.js
+2) Express.js
+3) mongoDB
+4) GIT
+5) WebPack
+
 https://api.mydiploma.students.nomoredomains.monster - Ссылка на API  
 IP: 178.154.210.90
 
