@@ -17,10 +17,18 @@ const NotFoundError = require('./errors/NotFoundError');
 
 const app = express();
 
-app.use(cors())
+const { PORT = 3000, LINK, NODE_ENV } = process.env;
+
+const corsOptions = {
+  origin: ['*'],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+};
+app.use('*', cors(corsOptions));
 app.use(helmet());
 
-const { PORT = 3000, LINK, NODE_ENV } = process.env;
 mongoose.connect(NODE_ENV === 'production' ? LINK : BD_DEV_HOST, {
   useNewUrlParser: true,
   useCreateIndex: true,
