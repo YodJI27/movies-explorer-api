@@ -6,6 +6,7 @@ const { errors } = require('celebrate');
 const helmet = require('helmet');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { BD_DEV_HOST } = require('./utils/config');
+const cors = require('cors')
 const userRouter = require('./routes/users');
 const moviesRouter = require('./routes/movies');
 const { authoriz } = require('./middlewares/auth');
@@ -16,6 +17,7 @@ const NotFoundError = require('./errors/NotFoundError');
 
 const app = express();
 
+app.use(cors())
 app.use(helmet());
 
 const { PORT = 3000, LINK, NODE_ENV } = process.env;
