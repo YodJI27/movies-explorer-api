@@ -75,14 +75,7 @@ router.delete(
       })
       .unknown(),
     params: Joi.object().keys({
-      movieId: Joi.string()
-        .required()
-        .custom((value) => {
-          if (!ObjectId.isValid(value)) {
-            throw new Error("Ошибка валидации. Передан неправильный Id");
-          }
-          return value;
-        }),
+      movieId: Joi.string().required().hex()
     }),
   }),
   deleteMovies
