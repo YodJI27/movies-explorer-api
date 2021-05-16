@@ -1,15 +1,15 @@
-const router = require('express').Router();
-const { celebrate, Joi } = require('celebrate');
-const validator = require('validator');
+const router = require("express").Router();
+const { celebrate, Joi } = require("celebrate");
+const validator = require("validator");
 
 const {
   getMovies,
   deleteMovies,
   createMovies,
-} = require('../controllers/movies');
+} = require("../controllers/movies");
 
 router.get(
-  '/movies',
+  "/movies",
   celebrate({
     headers: Joi.object()
       .keys({
@@ -17,11 +17,11 @@ router.get(
       })
       .unknown(),
   }),
-  getMovies,
+  getMovies
 );
 
 router.post(
-  '/movies',
+  "/movies",
   celebrate({
     headers: Joi.object()
       .keys({
@@ -40,7 +40,7 @@ router.post(
           if (validator.isURL(value)) {
             return value;
           }
-          return helpers.message('Поле image заполнено некорректно');
+          return helpers.message("Поле image заполнено некорректно");
         }),
       trailer: Joi.string()
         .required()
@@ -48,7 +48,7 @@ router.post(
           if (validator.isURL(value)) {
             return value;
           }
-          return helpers.message('Поле trailer заполнено некорректно');
+          return helpers.message("Поле trailer заполнено некорректно");
         }),
       thumbnail: Joi.string()
         .required()
@@ -56,18 +56,18 @@ router.post(
           if (validator.isURL(value)) {
             return value;
           }
-          return helpers.message('Поле thumbnail заполнено некорректно');
+          return helpers.message("Поле thumbnail заполнено некорректно");
         }),
       movieId: Joi.number().required(),
       nameRU: Joi.string().required(),
       nameEN: Joi.string().required(),
     }),
   }),
-  createMovies,
+  createMovies
 );
 
 router.delete(
-  '/movies/:movieId',
+  "/movies/:movieId",
   celebrate({
     headers: Joi.object()
       .keys({
@@ -75,11 +75,17 @@ router.delete(
       })
       .unknown(),
     params: Joi.object().keys({
-      movieId: Joi.string().alphanum().length(24).required()
-        .hex(),
+      movieId: Joi.string()
+        .required()
+        .custom((value) => {
+          if (!ObjectId.isValid(value)) {
+            throw new Error("Ошибка валидации. Передан неправильный Id");
+          }
+          return value;
+        }),
     }),
   }),
-  deleteMovies,
+  deleteMovies
 );
 
 module.exports = router;
