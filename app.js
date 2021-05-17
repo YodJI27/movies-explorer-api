@@ -6,6 +6,7 @@ const { errors } = require('celebrate');
 const helmet = require('helmet');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { BD_DEV_HOST } = require('./utils/config');
+const cors = require('cors')
 const userRouter = require('./routes/users');
 const moviesRouter = require('./routes/movies');
 const { authoriz } = require('./middlewares/auth');
@@ -16,9 +17,18 @@ const NotFoundError = require('./errors/NotFoundError');
 
 const app = express();
 
+const { PORT = 3000, LINK, NODE_ENV } = process.env;
+
+const corsOptions = {
+  origin: ['*'],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+};
+app.use('*', cors(corsOptions));
 app.use(helmet());
 
-const { PORT = 3000, LINK, NODE_ENV } = process.env;
 mongoose.connect(NODE_ENV === 'production' ? LINK : BD_DEV_HOST, {
   useNewUrlParser: true,
   useCreateIndex: true,
